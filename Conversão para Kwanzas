@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversor Moeda → Kz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff9f2;
+      color: #333;
+      text-align: center;
+      padding: 2rem;
+    }
+    input, button, select {
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      margin: 10px;
+    }
+    .resultado {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      color: #d35400;
+    }
+  </style>
+</head>
+<body>
+  <h2>💰 Conversor de Moeda para Kwanza (Kz)</h2>
+  <input type="number" id="valor" placeholder="Ex: 10" />
+  <select id="moeda">
+    <option value="usd">USD ($)</option>
+    <option value="eur">EUR (€)</option>
+  </select>
+  <p>Taxas: 1 USD = 1200 Kz | 1 EUR = 1300 Kz</p>
+  <button onclick="converter()">Converter</button>
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    function converter() {
+      const valor = parseFloat(document.getElementById("valor").value);
+      const moeda = document.getElementById("moeda").value;
+      let taxa = moeda === "usd" ? 1200 : moeda === "eur" ? 1300 : 0;
+      if (!isNaN(valor) && taxa > 0)
